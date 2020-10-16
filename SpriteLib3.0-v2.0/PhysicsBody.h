@@ -57,8 +57,10 @@ public:
 	//Getters
 	//Get the Box2D physics body
 	b2Body* GetBody() const;
+
 	//Get position of body
 	b2Vec2 GetPosition() const;
+
 	//Gets the current velocity
 	vec3 GetVelocity() const;
 
