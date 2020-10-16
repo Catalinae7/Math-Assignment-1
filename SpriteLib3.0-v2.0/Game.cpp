@@ -89,6 +89,7 @@ void Game::Update()
 {
 	//Update timer
 	Timer::Update();
+
 	//Update the backend
 	BackEnd::Update(m_register);
 	
@@ -230,6 +231,7 @@ void Game::KeyboardUp()
 		}
 		m_guiActive = !m_guiActive;
 	}
+
 	if (Input::GetKeyUp(Key::P))
 	{
 		PhysicsBody::SetDraw(!PhysicsBody::GetDraw());
