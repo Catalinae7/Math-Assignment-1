@@ -143,6 +143,7 @@ b2Vec2 PhysicsBody::GetPosition() const
 	return m_position;
 }
 
+
 vec3 PhysicsBody::GetVelocity() const
 {
 	//Returns current velocity
