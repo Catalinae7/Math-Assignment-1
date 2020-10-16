@@ -56,7 +56,7 @@ void FirstCreation::InitScene(float windowWidth, float windowHeight)
 		ECS::GetComponent<Sprite>(entity).SetTransparency(1.f);
 		ECS::GetComponent<Transform>(entity).SetPosition(vec3(0.f, 0.f, 0.f));
 	}
-	/*
+	
 	//Setup new Entity
 	{
 		//Creates entity
@@ -71,12 +71,12 @@ void FirstCreation::InitScene(float windowWidth, float windowHeight)
 		std::string fileName = "LinkStandby.png";
 		ECS::GetComponent<Sprite>(entity).LoadSprite(fileName, 40, 40);
 		ECS::GetComponent<Sprite>(entity).SetTransparency(1.f);
-		ECS::GetComponent<Transform>(entity).SetPosition(vec3(0.f, 0.f, 2.f));
+		ECS::GetComponent<Transform>(entity).SetPosition(vec3(0.f, 10.f, 2.f));
 	}
 
 	ECS::GetComponent<HorizontalScroll>(MainEntities::MainCamera()).SetFocus(&ECS::GetComponent<Transform>(MainEntities::MainPlayer()));
 	ECS::GetComponent<VerticalScroll>(MainEntities::MainCamera()).SetFocus(&ECS::GetComponent<Transform>(MainEntities::MainPlayer()));
-	*/
+	
 }
 
 void FirstCreation::Update()
@@ -93,7 +93,7 @@ void FirstCreation::KeyboardHold()
 
 	if (Input::GetKey(Key::W))
 	{
-		//player.SetPositionY(player.GetPositionY() + (speed * Timer::deltaTime));
+		player.SetPositionY(player.GetPositionY() + (speed * Timer::deltaTime));
 	}
 	if (Input::GetKey(Key::S))
 	{
@@ -108,6 +108,7 @@ void FirstCreation::KeyboardHold()
 	{
 		player.SetPositionX(player.GetPositionX() + (speed * Timer::deltaTime));
 	}
+
 }
 
 void FirstCreation::KeyboardDown()
