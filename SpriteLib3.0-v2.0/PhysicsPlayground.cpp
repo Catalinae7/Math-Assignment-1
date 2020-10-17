@@ -4,7 +4,7 @@
 PhysicsPlayground::PhysicsPlayground(std::string name)
 	: Scene(name)
 {
-	m_gravity = b2Vec2(0.f, -70.f);
+	m_gravity = b2Vec2(0.f, -100.f);
 	m_physicsWorld->SetGravity(m_gravity);
 }
 
@@ -74,6 +74,7 @@ void PhysicsPlayground::InitScene(float windowWidth, float windowHeight)
 		tempBody = m_physicsWorld->CreateBody(&tempDef);
 
 		tempPhsBody = PhysicsBody(tempBody, float(tempSpr.GetWidth() - shrinkX), float(tempSpr.GetHeight() - shrinkY), vec2(0.f, 0.f), false);
+
 
 		//stops the flips
 		ECS::GetComponent<PhysicsBody>(MainEntities::MainPlayer()).GetBody()->SetFixedRotation(true);
@@ -258,7 +259,6 @@ void PhysicsPlayground::KeyboardHold()
 	if (Input::GetKey(Key::A))
 	{
 		vel += b2Vec2(-0.07f, 0.f);
-
 	}
 	if (Input::GetKey(Key::D))
 	{
@@ -271,7 +271,27 @@ void PhysicsPlayground::KeyboardHold()
 		if (-0.01 < player.GetBody()->GetLinearVelocity().y && player.GetBody()->GetLinearVelocity().y < 0.01) {
 
 			vel += b2Vec2(0.f, 9.f);
+
+
 		}
+	}
+
+	if(player.GetVelocity().x != 0)
+	{
+		std::cout << " Horizontal position is: " << player.GetPosition().x;
+		std::cout << " At " << Timer::currentClock << " :";
+		std::cout << " Horizontal velocity is: " << player.GetVelocity().x;
+		std::cout << "\n";
+		Timer::Reset();
+	}
+
+	if (player.GetVelocity().y != 0)
+	{
+		std::cout << " Vertical position is: " << player.GetPosition().y ;
+		std::cout << " At " << Timer::currentClock << " :";
+		std::cout << " Vertical velocity is: " << player.GetVelocity().y;
+		std::cout << "\n";
+		Timer::Reset();
 	}
 
 	player.GetBody()->SetLinearVelocity(player.GetBody()->GetLinearVelocity() + speed * vel);
